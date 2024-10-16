@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Wiki Page</title>
+    <style>
+        body {
+            font-family: "Georgia", "Times New Roman", Times, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            background-color: #f9f9f9;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 220px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-right: 1px solid #ccc;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        /* Content Section */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            max-width: 900px;
+        }
+
+        /* Headings */
+        h1, h2 {
+            font-family: "Linux Libertine", "Georgia", "Times New Roman", serif;
+            cursor: pointer; /* Make headings clickable */
+        }
+
+        h1 {
+            font-size: 2.2em;
+            margin-top: 40px;
+            color: #333;
+        }
+
+        h2 {
+            font-size: 1.6em;
+            margin-top: 20px;
+            color: #444;
+        }
+
+        /* Collapsible content */
+        .collapsible-content {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 20px;
+        }
+
+        /* Styling for collapsible TOC */
+        .collapsible-toc {
+            cursor: pointer;
+            color: #007BFF;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+        }
+
+        .collapsible-toc::before {
+            content: "\25B6"; /* Right arrow */
+            margin-right: 8px;
+        }
+
+        .collapsible-toc.active::before {
+            content: "\25BC"; /* Down arrow */
+        }
+
+        .toc-nested {
+            display: none;
+            margin-left: 20px;
+        }
+
+        .toc-nested.active {
+            display: block;
+        }
+
+        /* Table of Contents */
+        .toc {
+            font-size: 1.2em;
+            line-height: 1.8em;
+            color: #333;
+        }
+
+        .toc a {
+            text-decoration: none;
+            color: #007BFF;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        .toc li {
+            margin: 5px 0;
+        }
+
+        /* Additional content style */
+        p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 20px 0;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+            }
+            .content {
+                margin-left: 220px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .sidebar {
+                width: 180px;
+            }
+            .content {
+                margin-left: 200px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="toc">
+            <h1>Contents</h1>
+            <ul>
+                <li>
+                    <a class="collapsible-toc" href="#earlyLife">Early Life</a>
+                    <ul class="toc-nested">
+                        <li><a href="#education">Education</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="collapsible-toc" href="#career">Career</a>
+                    <ul class="toc-nested">
+                        <li><a href="#firstJob">First Job</a></li>
+                        <li><a href="#secondJob">Second Job</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="content">
+        <h1 id="earlyLife">Early Life</h1>
+        <div class="collapsible-content">
+            <hr>
+            <h2 id="education">Education</h2>
+            <div class="collapsible-content">
+                <ul>
+                    <li><b>Nursery to 2nd grade</b> - Gelivi's Venkateswara Vidyalaya, Nandyala</li>
+                    <li><b>3rd to 7th grade</b> - Sri Chaitanya EM School, Nandyala</li>
+                    <li><b>8th to 10th grade</b> - Sri Chaitanya EM High School, Kurnool</li>
+                    <li><b>11th and 12th grade</b> - Sri Chaitanya Junior Kalasala, Hyderabad</li>
+                    <li><b>Present</b> - International Institute of Information Technology Bangalore</li>
+                </ul>
+            </div>
+        </div>
+
+        <h1 id="career">Career</h1>
+        <div class="collapsible-content">
+            <hr>
+            <h2 id="firstJob">Summer research internship program</h2>
+            <div class="collapsible-content">
+                <p>I got my summer internship at International Institute of Information Technology Bangalore under prof.Madhav Rao from June to August 2024. I have worked on making an N x N muliplier in verilog using Wallace and Daddas multiplication algorithms to make them more space and time efficient.</p>
+            </div>
+
+            <h2 id="secondJob">Achievements</h2>
+            <div class="collapsible-content">
+                <ul>
+                    <li>CGI Merit scholarship.</li>
+                    <li>Scholar of Women engineering program by Talentsprint.</li>
+                    <li>Secured 2nd place in HackNite (Hackathon conducted by Zense, the coding club of IIIT Bangalore)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible behavior for TOC sections
+        var tocCollapsibles = document.getElementsByClassName("collapsible-toc");
+        for (var i = 0; i < tocCollapsibles.length; i++) {
+            tocCollapsibles[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.classList.contains("active")) {
+                    content.classList.remove("active");
+                } else {
+                    content.classList.add("active");
+                }
+            });
+        }
+
+        // Collapsible behavior for h1 and h2
+        var headings = document.querySelectorAll(".content h1, .content h2");
+        for (var i = 0; i < headings.length; i++) {
+            headings[i].addEventListener("click", function() {
+                var content = this.nextElementSibling;
+                if (content.classList.contains("collapsible-content")) {
+                    content.style.display = content.style.display === "block" ? "none" : "block";
+                }
+            });
+        }
+
+        // Automatically expand the first section
+        document.querySelectorAll(".content .collapsible-content")[0].style.display = "block";
+    </script>
+</body>
+</html>
